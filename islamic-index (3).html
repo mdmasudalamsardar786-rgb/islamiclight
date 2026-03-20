@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="bn" id="htmlRoot">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ইসলামিক আলো | Islamic Light</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Sans+Bengali:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #2D6A4F;
+      --green-light: #E8F5E9;
+      --green-mid: #B7DFC8;
+      --gold: #C8A94A;
+      --gold-light: #FDF3DC;
+      --gray: #F0F0EE;
+      --gray-mid: #CCCCCC;
+      --ink: #1A1A1A;
+      --ink-soft: #555555;
+      --white: #FFFFFF;
+      --border: rgba(0,0,0,0.12);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--gray);
+      color: var(--ink);
+      font-family: 'Noto Sans Bengali', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* Gold shimmer overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,169,74,0.03) 0%, transparent 50%, rgba(200,169,74,0.03) 100%);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-bar {
+      background: var(--green);
+      padding: 0.6rem 2rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+
+    .lang-bar span {
+      color: var(--gold-light);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.3rem 0.9rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--gold);
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 12px rgba(45,106,79,0.08);
+      position: sticky;
+      top: 46px;
+      z-index: 100;
+      padding: 0.8rem 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+    }
+
+    .nav-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      border: 2px solid var(--gold);
+    }
+
+    .nav-title {
+      font-family: 'Amiri', serif;
+      font-size: 1.4rem;
+      color: var(--green);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .nav-title small {
+      display: block;
+      font-size: 0.65rem;
+      color: var(--gold);
+      font-family: 'Noto Sans Bengali', sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.3rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 4px;
+      transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+      background: var(--green-light);
+      border-color: var(--green-mid);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--green) 0%, #1B4332 100%);
+      padding: 5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 30px,
+        rgba(200,169,74,0.04) 30px,
+        rgba(200,169,74,0.04) 31px
+      );
+    }
+
+    .hero-bismillah {
+      font-family: 'Amiri', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--gold);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .hero-bismillah-bn {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      position: relative;
+    }
+
+    .hero-line {
+      width: 80px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+      position: relative;
+    }
+
+    /* ── SECTIONS ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+    section { padding: 4rem 2rem; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      border: 1px solid var(--green-mid);
+      padding: 0.3rem 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--green);
+      line-height: 1.3;
+    }
+
+    .section-line {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0.8rem auto 0;
+    }
+
+    /* ── KALEMA CARDS ── */
+    #kalema { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .kalema-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .kalema-card {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      padding: 2rem;
+      border-radius: 4px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .kalema-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(45,106,79,0.12);
+    }
+
+    .kalema-number {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 28px;
+      height: 28px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .kalema-name {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .kalema-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 1.4rem;
+      color: var(--green);
+      line-height: 2;
+      margin-bottom: 0.8rem;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .kalema-bn { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 0.5rem; }
+    .kalema-en { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.7; font-style: italic; }
+
+    /* ── AYAT ── */
+    #ayat { background: var(--gold-light); }
+
+    .ayat-box {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      padding: 2.5rem 3rem;
+      border-radius: 4px;
+      box-shadow: 0 4px 24px rgba(200,169,74,0.1);
+    }
+
+    .ayat-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 1.8rem;
+      color: var(--green);
+      line-height: 2.2;
+      direction: rtl;
+      text-align: right;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    .ayat-translation { font-size: 0.95rem; color: var(--ink-soft); line-height: 2; margin-bottom: 0.5rem; }
+    .ayat-ref { font-size: 0.75rem; color: var(--gold); font-weight: 600; letter-spacing: 0.05em; }
+
+    /* ── DUA ── */
+    #dua { background: var(--white); }
+
+    .dua-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .dua-card {
+      background: var(--green-light);
+      border: 1px solid var(--green-mid);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: transform 0.3s;
+    }
+
+    .dua-card:hover { transform: translateY(-3px); }
+
+    .dua-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--green-mid);
+    }
+
+    .dua-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 1.2rem;
+      color: var(--green);
+      line-height: 2;
+      direction: rtl;
+      text-align: right;
+      margin-bottom: 1rem;
+    }
+
+    .dua-bn { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 0.4rem; }
+    .dua-en { font-size: 0.8rem; color: var(--ink-soft); font-style: italic; line-height: 1.7; }
+
+    /* ── HADITH ── */
+    #hadith { background: var(--gray); }
+
+    .hadith-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hadith-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem 2.5rem;
+      position: relative;
+      transition: box-shadow 0.3s;
+    }
+
+    .hadith-card:hover { box-shadow: 0 8px 32px rgba(45,106,79,0.1); }
+
+    .hadith-icon {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      width: 32px;
+      height: 32px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-family: 'Amiri', serif;
+    }
+
+    .hadith-text {
+      font-size: 0.95rem;
+      line-height: 2;
+      color: var(--ink);
+      padding-left: 3rem;
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+
+    .hadith-source {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 600;
+      padding-left: 3rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── PROPHET QUOTES ── */
+    #quotes { background: var(--green); }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .quote-card {
+      border: 1px solid rgba(200,169,74,0.3);
+      padding: 2rem;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+      position: relative;
+    }
+
+    .quote-card:hover { border-color: var(--gold); }
+
+    .quote-mark {
+      font-family: 'Amiri', serif;
+      font-size: 4rem;
+      color: rgba(200,169,74,0.2);
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      line-height: 1;
+    }
+
+    .quote-text {
+      font-size: 0.95rem;
+      line-height: 2;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .quote-source {
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── NEWS ── */
+    #news { background: var(--white); }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .news-card {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .news-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+
+    .news-tag {
+      background: var(--green);
+      color: var(--white);
+      padding: 0.8rem 1.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .news-body { padding: 1.5rem; }
+
+    .news-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .news-excerpt { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 1rem; }
+
+    .news-link {
+      font-size: 0.78rem;
+      color: var(--green);
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--green-mid);
+      padding-bottom: 2px;
+      transition: border-color 0.3s;
+    }
+
+    .news-link:hover { border-color: var(--green); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0D2818;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 2px solid var(--gold);
+    }
+
+    .footer-bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-text { font-size: 0.8rem; line-height: 2; }
+
+    /* ── LANGUAGE TOGGLE ── */
+    .lang-en { display: none; }
+    .lang-bn { display: block; }
+
+    body.en .lang-en { display: block; }
+    body.en .lang-bn { display: none; }
+
+    /* Inline spans */
+    span.lang-en { display: none; }
+    span.lang-bn { display: inline; }
+    body.en span.lang-en { display: inline; }
+    body.en span.lang-bn { display: none; }
+
+
+    /* ── ACCORDION KALEMA ── */
+    .kalema-accordion { max-width: 750px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.8rem; }
+
+    .acc-item { background: var(--white); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; transition: box-shadow 0.3s; }
+    .acc-item:hover { box-shadow: 0 4px 20px rgba(45,106,79,0.1); }
+
+    .acc-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      background: var(--white);
+      border: none;
+      width: 100%;
+      text-align: left;
+      border-top: 3px solid var(--gold);
+      transition: background 0.3s;
+      font-family: inherit;
+    }
+
+    .acc-header:hover { background: var(--green-light); }
+    .acc-header.open { background: var(--green-light); }
+
+    .acc-num {
+      width: 32px; height: 32px;
+      background: var(--green);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .acc-name { font-size: 1rem; font-weight: 600; color: var(--green); flex: 1; }
+    .acc-name small { display: block; font-size: 0.75rem; color: var(--ink-soft); font-weight: 400; margin-top: 0.2rem; }
+
+    .acc-arrow { font-size: 0.9rem; color: var(--gold); transition: transform 0.3s; font-weight: 700; }
+    .acc-header.open .acc-arrow { transform: rotate(180deg); }
+
+    .acc-body { display: none; padding: 1.5rem 1.5rem 1.5rem 4rem; background: var(--gray); border-top: 1px solid var(--border); }
+    .acc-body.open { display: block; }
+
+    .acc-arabic { font-family: 'Amiri', serif; font-size: 1.5rem; color: var(--green); direction: rtl; text-align: right; line-height: 2.2; margin-bottom: 1rem; }
+    .acc-translation { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.9; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 3rem 1.5rem; }
+      section { padding: 3rem 1.5rem; }
+      .ayat-box { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body id="bodyRoot">
+
+  <!-- TOP STICKY BAR -->
+  <div style="position: sticky; top: 0; z-index: 200; background: var(--green); border-bottom: 2px solid #C8A94A;">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 2rem;">
+      <div style="font-family: 'Amiri', serif; font-size: 1.3rem; font-weight: 700; color: #C8A94A; letter-spacing: 0.02em;">
+        <span class="lang-bn">☪️ ইসলামিক আলো</span>
+        <span class="lang-en">☪️ Islamic Light</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <span style="color: rgba(255,255,255,0.7); font-size: 0.75rem;">
+          <span class="lang-bn">ভাষা:</span><span class="lang-en">Language:</span>
+        </span>
+        <button class="lang-btn active" id="btnBn" onclick="setLang('bn')">বাংলা</button>
+        <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#kalema"><span class="lang-bn">কালেমা</span><span class="lang-en">Kalema</span></a></li>
+      <li><a href="#ayat"><span class="lang-bn">আয়াত</span><span class="lang-en">Ayat</span></a></li>
+      <li><a href="#dua"><span class="lang-bn">দোয়া</span><span class="lang-en">Dua</span></a></li>
+      <li><a href="#hadith"><span class="lang-bn">হাদিস</span><span class="lang-en">Hadith</span></a></li>
+      <li><a href="#quotes"><span class="lang-bn">বাণী</span><span class="lang-en">Quotes</span></a></li>
+      <li><a href="#news"><span class="lang-bn">নিউজ</span><span class="lang-en">News</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <p class="hero-bismillah-bn">
+      <span class="lang-bn">পরম করুণাময় অসীম দয়ালু আল্লাহর নামে শুরু করছি</span>
+      <span class="lang-en">In the name of Allah, the Most Gracious, the Most Merciful</span>
+    </p>
+    <div class="hero-line"></div>
+    <h1 class="hero-title">
+      <span class="lang-bn">ইসলামিক আলো</span>
+      <span class="lang-en">Islamic Light</span>
+    </h1>
+    <p class="hero-subtitle">
+      <span class="lang-bn">কোরআন • হাদিস • দোয়া • ইসলামিক জ্ঞান</span>
+      <span class="lang-en">Quran • Hadith • Dua • Islamic Knowledge</span>
+    </p>
+  </div>
+
+  <!-- KALEMA -->
+  <section id="kalema">
+    <div class="section-header">
+      <div class="section-tag"><span class="lang-bn">বিশ্বাসের মূল</span><span class="lang-en">Foundation of Faith</span></div>
+      <h2 class="section-title">
+        <span class="lang-bn">পাঁচটি কালেমা</span>
+        <span class="lang-en">Five Kalemas</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="kalema-accordion">
+
+      <div class="acc-item">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-num">১</div>
+          <div class="acc-name">
+            <span class="lang-bn">কালেমা তাইয়্যেবা</span><span class="lang-en">Kalema Tayyiba</span>
+            <small><span class="lang-bn">পবিত্র বাক্য</span><span class="lang-en">The Pure Word</span></small>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-arabic">لَا إِلَٰهَ إِلَّا ٱللَّٰهُ مُحَمَّدٌ رَّسُولُ ٱللَّٰهِ</div>
+          <p class="acc-translation lang-bn">আল্লাহ ছাড়া কোনো উপাস্য নেই, মুহাম্মদ (সা.) আল্লাহর রাসূল।</p>
+          <p class="acc-translation lang-en">There is no god but Allah, Muhammad is the messenger of Allah.</p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-num">২</div>
+          <div class="acc-name">
+            <span class="lang-bn">কালেমা শাহাদাত</span><span class="lang-en">Kalema Shahadat</span>
+            <small><span class="lang-bn">সাক্ষ্যের বাক্য</span><span class="lang-en">Word of Testimony</span></small>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-arabic">أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ</div>
+          <p class="acc-translation lang-bn">আমি সাক্ষ্য দিচ্ছি যে আল্লাহ ছাড়া কোনো উপাস্য নেই এবং মুহাম্মদ (সা.) তাঁর বান্দা ও রাসূল।</p>
+          <p class="acc-translation lang-en">I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and messenger.</p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-num">৩</div>
+          <div class="acc-name">
+            <span class="lang-bn">কালেমা তামজীদ</span><span class="lang-en">Kalema Tamjeed</span>
+            <small><span class="lang-bn">মহিমার বাক্য</span><span class="lang-en">Word of Glorification</span></small>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-arabic">سُبْحَانَ ٱللَّٰهِ وَٱلْحَمْدُ لِلَّٰهِ وَلَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَٱللَّٰهُ أَكْبَرُ</div>
+          <p class="acc-translation lang-bn">আল্লাহ পবিত্র, সকল প্রশংসা আল্লাহর, আল্লাহ ছাড়া কোনো উপাস্য নেই, আল্লাহ সর্বমহান।</p>
+          <p class="acc-translation lang-en">Glory be to Allah, all praise be to Allah, there is no god but Allah, Allah is the Greatest.</p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-num">৪</div>
+          <div class="acc-name">
+            <span class="lang-bn">কালেমা তাওহীদ</span><span class="lang-en">Kalema Tawheed</span>
+            <small><span class="lang-bn">একত্বের বাক্য</span><span class="lang-en">Word of Oneness</span></small>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-arabic">لَا إِلَٰهَ إِلَّا ٱللَّٰهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ يُحْيِي وَيُمِيتُ وَهُوَ حَيٌّ لَا يَمُوتُ</div>
+          <p class="acc-translation lang-bn">আল্লাহ ছাড়া কোনো উপাস্য নেই, তিনি একা, তাঁর কোনো শরিক নেই। রাজত্ব তাঁর এবং প্রশংসা তাঁর। তিনি জীবন দেন ও মৃত্যু দেন। তিনি চিরজীবী, মৃত্যু নেই তাঁর।</p>
+          <p class="acc-translation lang-en">There is no god but Allah, alone, without any partner. His is the kingdom and His is the praise. He gives life and causes death. He is Ever-Living and will never die.</p>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-num">৫</div>
+          <div class="acc-name">
+            <span class="lang-bn">কালেমা রদ্দে কুফর</span><span class="lang-en">Kalema Radde Kufr</span>
+            <small><span class="lang-bn">কুফর প্রত্যাখ্যানের বাক্য</span><span class="lang-en">Word of Rejecting Disbelief</span></small>
+          </div>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-arabic">ٱللَّٰهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ أَنْ أُشْرِكَ بِكَ شَيْئًا وَأَنَا أَعْلَمُ وَأَسْتَغْفِرُكَ لِمَا لَا أَعْلَمُ</div>
+          <p class="acc-translation lang-bn">হে আল্লাহ, আমি তোমার সাথে জেনে বুঝে কাউকে শরিক করা থেকে আশ্রয় চাই এবং যা আমি জানি না তার জন্যও তোমার কাছে ক্ষমা চাই।</p>
+          <p class="acc-translation lang-en">O Allah, I seek refuge in You from knowingly associating partners with You, and I seek Your forgiveness for what I do not know.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AYAT -->
+  <section id="ayat">
+    <div class="section-header">
+      <div class="section-tag"><span class="lang-bn">আল্লাহর বাণী</span><span class="lang-en">Words of Allah</span></div>
+      <h2 class="section-title">
+        <span class="lang-bn">কোরআনের আয়াত</span>
+        <span class="lang-en">Verses of Quran</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="container">
+      <div class="ayat-box">
+        <div class="ayat-arabic">إِنَّ مَعَ ٱلْعُسْرِ يُسْرًا</div>
+        <p class="ayat-translation lang-bn">নিশ্চয়ই কষ্টের সাথে স্বস্তি আছে।</p>
+        <p class="ayat-translation lang-en">Indeed, with hardship will be ease.</p>
+        <p class="ayat-ref">— সূরা আশ-শারহ ৯৪:৬ | Surah Ash-Sharh 94:6</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DUA -->
+  <section id="dua">
+    <div class="section-header">
+      <div class="section-tag"><span class="lang-bn">আল্লাহর কাছে প্রার্থনা</span><span class="lang-en">Prayers to Allah</span></div>
+      <h2 class="section-title">
+        <span class="lang-bn">গুরুত্বপূর্ণ দোয়া</span>
+        <span class="lang-en">Important Duas</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="dua-grid">
+
+      <div class="dua-card">
+        <div class="dua-title"><span class="lang-bn">ঘুমানোর দোয়া</span><span class="lang-en">Dua Before Sleep</span></div>
+        <div class="dua-arabic">بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا</div>
+        <p class="dua-bn lang-bn">হে আল্লাহ, তোমার নামে মরি ও বাঁচি।</p>
+        <p class="dua-en lang-en">O Allah, in Your name I die and I live.</p>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-title"><span class="lang-bn">খাওয়ার আগের দোয়া</span><span class="lang-en">Dua Before Eating</span></div>
+        <div class="dua-arabic">بِسْمِ اللَّهِ وَعَلَى بَرَكَةِ اللَّهِ</div>
+        <p class="dua-bn lang-bn">আল্লাহর নামে এবং আল্লাহর বরকতের উপর।</p>
+        <p class="dua-en lang-en">In the name of Allah and with the blessings of Allah.</p>
+      </div>
+
+      <div class="dua-card">
+        <div class="dua-title"><span class="lang-bn">সকালের দোয়া</span><span class="lang-en">Morning Dua</span></div>
+        <div class="dua-arabic">أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ</div>
+        <p class="dua-bn lang-bn">আমরা সকালে উঠলাম এবং সমস্ত রাজত্ব আল্লাহর।</p>
+        <p class="dua-en lang-en">We have reached the morning and the whole kingdom belongs to Allah.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HADITH -->
+  <section id="hadith">
+    <div class="section-header">
+      <div class="section-tag"><span class="lang-bn">নবীর বাণী</span><span class="lang-en">Prophet's Words</span></div>
+      <h2 class="section-title">
+        <span class="lang-bn">হাদিস শরীফ</span>
+        <span class="lang-en">Hadith Sharif</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="hadith-list">
+
+      <div class="hadith-card">
+        <div class="hadith-icon">١</div>
+        <p class="hadith-text lang-bn">যে ব্যক্তি আল্লাহ ও পরকালের প্রতি বিশ্বাস রাখে, সে যেন ভালো কথা বলে অথবা চুপ থাকে।</p>
+        <p class="hadith-text lang-en">Whoever believes in Allah and the Last Day should speak good or remain silent.</p>
+        <p class="hadith-source">— সহীহ বুখারী ও মুসলিম | Sahih Bukhari & Muslim</p>
+      </div>
+
+      <div class="hadith-card">
+        <div class="hadith-icon">٢</div>
+        <p class="hadith-text lang-bn">মুসলমান সে ব্যক্তি যার হাত ও জিহ্বা থেকে অন্য মুসলমান নিরাপদ থাকে।</p>
+        <p class="hadith-text lang-en">A Muslim is the one from whose tongue and hand other Muslims are safe.</p>
+        <p class="hadith-source">— সহীহ বুখারী | Sahih Bukhari</p>
+      </div>
+
+      <div class="hadith-card">
+        <div class="hadith-icon">٣</div>
+        <p class="hadith-text lang-bn">তোমরা একে অপরের সাথে ঈর্ষা করো না, একে অপরের বিরুদ্ধে ঘৃণা পোষণ করো না এবং পরস্পর ভাই হয়ে যাও।</p>
+        <p class="hadith-text lang-en">Do not envy one another, do not hate one another, and be brothers to one another.</p>
+        <p class="hadith-source">— সহীহ মুসলিম | Sahih Muslim</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROPHET QUOTES -->
+  <section id="quotes">
+    <div class="section-header">
+      <div class="section-tag" style="background:rgba(200,169,74,0.15); color:var(--gold); border-color:rgba(200,169,74,0.3);">
+        <span class="lang-bn">মহানবী (সা.)</span><span class="lang-en">Prophet Muhammad (PBUH)</span>
+      </div>
+      <h2 class="section-title" style="color:var(--white);">
+        <span class="lang-bn">গুরুত্বপূর্ণ বাণী</span>
+        <span class="lang-en">Important Sayings</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="quotes-grid">
+
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text lang-bn">জ্ঞান অর্জন করা প্রত্যেক মুসলমান নর-নারীর উপর ফরজ।</p>
+        <p class="quote-text lang-en">Seeking knowledge is an obligation upon every Muslim.</p>
+        <p class="quote-source">— ইবনে মাজাহ | Ibn Majah</p>
+      </div>
+
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text lang-bn">তোমার মধ্যে সে ব্যক্তিই উত্তম যে তার পরিবারের কাছে উত্তম।</p>
+        <p class="quote-text lang-en">The best of you is the one who is best to his family.</p>
+        <p class="quote-source">— তিরমিযী | Tirmidhi</p>
+      </div>
+
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text lang-bn">হাসিমুখে তোমার ভাইয়ের সাথে দেখা করাও সদকা।</p>
+        <p class="quote-text lang-en">Your smile for your brother is a charity.</p>
+        <p class="quote-source">— তিরমিযী | Tirmidhi</p>
+      </div>
+
+      <div class="quote-card">
+        <span class="quote-mark">"</span>
+        <p class="quote-text lang-bn">দুনিয়া মুমিনের জন্য কারাগার আর কাফেরের জন্য জান্নাত।</p>
+        <p class="quote-text lang-en">The world is a prison for the believer and a paradise for the disbeliever.</p>
+        <p class="quote-source">— সহীহ মুসলিম | Sahih Muslim</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section id="news">
+    <div class="section-header">
+      <div class="section-tag"><span class="lang-bn">ইসলামিক খবর</span><span class="lang-en">Islamic News</span></div>
+      <h2 class="section-title">
+        <span class="lang-bn">সাম্প্রতিক আর্টিকেল</span>
+        <span class="lang-en">Recent Articles</span>
+      </h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="news-grid">
+
+
+
+      <div class="news-card">
+        <div class="news-tag"><span class="lang-bn">ইসলাম</span><span class="lang-en">Islam</span></div>
+        <div class="news-body">
+          <h3 class="news-title lang-bn">নামাজের গুরুত্ব ও ফজিলত</h3>
+          <h3 class="news-title lang-en">Importance and Virtue of Prayer</h3>
+          <p class="news-excerpt lang-bn">নামাজ ইসলামের দ্বিতীয় স্তম্ভ। প্রতিদিন পাঁচ ওয়াক্ত নামাজ আদায় করা প্রত্যেক মুসলমানের উপর ফরজ।</p>
+          <p class="news-excerpt lang-en">Prayer is the second pillar of Islam. Performing five daily prayers is obligatory upon every Muslim.</p>
+          <a href="namaz.html" class="news-link"><span class="lang-bn">আরো পড়ুন →</span><span class="lang-en">Read More →</span></a>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-tag"><span class="lang-bn">জ্ঞান</span><span class="lang-en">Knowledge</span></div>
+        <div class="news-body">
+          <h3 class="news-title lang-bn">ইসলামে জ্ঞান অর্জনের গুরুত্ব</h3>
+          <h3 class="news-title lang-en">Importance of Seeking Knowledge in Islam</h3>
+          <p class="news-excerpt lang-bn">ইসলাম জ্ঞান অর্জনকে অত্যন্ত গুরুত্ব দেয়। কোরআনের প্রথম নাজিল হওয়া আয়াতেই পড়ার নির্দেশ দেওয়া হয়েছে।</p>
+          <p class="news-excerpt lang-en">Islam gives great importance to seeking knowledge. The first verse revealed in the Quran commands to read.</p>
+          <a href="knowledge.html" class="news-link"><span class="lang-bn">আরো পড়ুন →</span><span class="lang-en">Read More →</span></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPECIAL BANNER -->
+  <section style="background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%); padding: 4rem 2rem; border-top: 3px solid #C8A94A; border-bottom: 3px solid #C8A94A;">
+    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+      <div style="display: inline-block; background: rgba(200,169,74,0.15); border: 1px solid rgba(200,169,74,0.4); padding: 0.4rem 1.2rem; font-size: 0.72rem; letter-spacing: 0.15em; color: #C8A94A; text-transform: uppercase; margin-bottom: 1.5rem; border-radius: 2px;">
+        <span class="lang-bn">বিশেষ বার্তা</span><span class="lang-en">Special Message</span>
+      </div>
+      <h2 style="font-family: 'Amiri', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); color: #ffffff; margin-bottom: 1.5rem; line-height: 1.5;">
+        <span class="lang-bn">নিজেকে আদর্শ হিসেবে গড়ে তুলতে ইসলামের পথে আসুন</span>
+        <span class="lang-en">Come to the path of Islam to build yourself as an ideal person</span>
+      </h2>
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(200,169,74,0.3); border-left: 4px solid #C8A94A; padding: 1.5rem 2rem; margin: 1.5rem 0; border-radius: 4px;">
+        <p style="font-family: 'Amiri', serif; font-size: 1.6rem; color: #C8A94A; direction: rtl; text-align: right; margin-bottom: 0.8rem; line-height: 2;">وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا</p>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.8;" class="lang-bn">যে ব্যক্তি আল্লাহকে ভয় করে, আল্লাহ তার জন্য পথ বের করে দেন।</p>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.8;" class="lang-en">And whoever fears Allah, He will make for him a way out.</p>
+        <p style="font-size: 0.75rem; color: #C8A94A; font-weight: 600; margin-top: 0.5rem;">— সূরা আত-তালাক ৬৫:২ | Surah At-Talaq 65:2</p>
+      </div>
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(200,169,74,0.3); padding: 1.5rem 2rem; margin: 1rem 0; border-radius: 4px;">
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 2; font-style: italic;" class="lang-bn">"তোমরা ইসলামে পরিপূর্ণভাবে প্রবেশ করো এবং শয়তানের পদাঙ্ক অনুসরণ করো না।" — আল-কোরআন ২:২০৮</p>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 2; font-style: italic;" class="lang-en">"O you who have believed, enter into Islam completely and do not follow the footsteps of Satan." — Al-Quran 2:208</p>
+      </div>
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(200,169,74,0.3); padding: 1.5rem 2rem; margin: 1rem 0; border-radius: 4px;">
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 2; font-style: italic;" class="lang-bn">"যে ব্যক্তি আল্লাহর পথে একটি কদম এগিয়ে আসে, আল্লাহ তার দিকে দশ কদম এগিয়ে যান।" — হাদিস কুদসি</p>
+        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 2; font-style: italic;" class="lang-en">"Whoever comes to Me walking, I will come to him running." — Hadith Qudsi (Bukhari)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bismillah">اَلْحَمْدُ لِلَّهِ</div>
+    <p style="font-family:'Amiri',serif; font-size:1rem; color:rgba(255,255,255,0.6); margin-bottom:0.5rem;">আলহামদুলিল্লাহ — সমস্ত প্রশংসা আল্লাহর জন্য</p>
+    <p class="footer-text lang-bn">© ২০২৫ ইসলামিক আলো | সকল তথ্য কোরআন ও হাদিসের আলোকে</p>
+    <p class="footer-text lang-en">© 2025 Islamic Light | All content based on Quran and Hadith</p>
+    <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(200,169,74,0.2);">
+      <p style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem;">
+        Designed by <a href="https://mmalam.in" target="_blank" style="color: #C8A94A; text-decoration: none; font-weight: 600;">Md Masud Alam Sardar</a>
+      </p>
+      <p style="font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 0.4rem;">
+        <a href="mailto:mdmasudalamsardar786@gmail.com" style="color: rgba(200,169,74,0.7); text-decoration: none;">✉️ mdmasudalamsardar786@gmail.com</a>
+      </p>
+      <p style="font-size: 0.78rem; color: rgba(255,255,255,0.4);">
+        Visit my portfolio: <a href="https://mmalam.in" target="_blank" style="color: #C8A94A; text-decoration: none;">www.mmalam.in</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function setLang(lang) {
+      const body = document.getElementById('bodyRoot');
+      const btnBn = document.getElementById('btnBn');
+      const btnEn = document.getElementById('btnEn');
+      if (lang === 'en') {
+        body.classList.add('en');
+        btnEn.classList.add('active');
+        btnBn.classList.remove('active');
+      } else {
+        body.classList.remove('en');
+        btnBn.classList.add('active');
+        btnEn.classList.remove('active');
+      }
+    }
+
+    const reveals = document.querySelectorAll('.kalema-card, .dua-card, .hadith-card, .quote-card, .news-card, .ayat-box');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    function toggleAcc(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.acc-body.open').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.acc-header.open').forEach(b => b.classList.remove('open'));
+      if (!isOpen) {
+        body.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+  </script>
+
+</body>
+</html>
