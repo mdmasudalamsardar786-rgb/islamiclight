@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="bn" id="R">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Islamic Audio | Islamic Light</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#2D6A4F;--gl:#E8F5E9;--gm:#B7DFC8;--gold:#C8A94A;--gray:#F0F0EE;--ink:#1A1A1A;--soft:#555;--white:#fff;--bd:rgba(0,0,0,.1)}
+body{background:var(--gray);color:var(--ink);font-family:'Noto Sans Bengali',sans-serif}
+.bar{position:sticky;top:0;z-index:200;background:var(--g);border-bottom:2px solid var(--gold);display:flex;justify-content:space-between;align-items:center;padding:.7rem 2rem}
+.bar a{font-family:'Amiri',serif;font-size:1.3rem;font-weight:700;color:var(--gold);text-decoration:none}
+.lb{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.3rem .9rem;font-size:.75rem;cursor:pointer;border-radius:2px;margin-left:.4rem;font-family:inherit}
+.lb.on,.lb:hover{background:var(--gold);color:var(--g);font-weight:600}
+nav{background:var(--white);border-bottom:1px solid var(--bd);position:sticky;top:46px;z-index:100;padding:.8rem;display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap}
+nav a{font-size:.82rem;color:var(--soft);text-decoration:none;padding:.4rem .8rem;border-radius:4px;border:1px solid transparent}
+nav a:hover,nav a.on{color:var(--g);background:var(--gl);border-color:var(--gm)}
+.hero{background:linear-gradient(135deg,var(--g),#1B4332);padding:3rem 2rem;text-align:center;border-bottom:3px solid var(--gold)}
+.htag{display:inline-block;background:rgba(200,169,74,.15);border:1px solid rgba(200,169,74,.4);padding:.3rem 1rem;font-size:.72rem;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;border-radius:2px}
+.hero h1{font-family:'Amiri',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;line-height:1.4}
+.hero p{font-size:.88rem;color:rgba(255,255,255,.65);margin-top:.5rem}
+main{padding:3rem 2rem;max-width:1100px;margin:0 auto}
+.cat{margin-bottom:3rem}
+.ct{font-family:'Amiri',serif;font-size:1.3rem;color:var(--g);margin-bottom:1.2rem;padding-bottom:.5rem;border-bottom:2px solid var(--gold);display:flex;align-items:center;gap:.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.card{background:var(--white);border:1px solid var(--bd);border-radius:8px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(45,106,79,.12)}
+.top{padding:1.2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid var(--gold)}
+.ico{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;background:rgba(200,169,74,.2);border:1px solid rgba(200,169,74,.4)}
+.ti{font-family:'Amiri',serif;font-size:1rem;color:#fff;line-height:1.3;margin-bottom:.2rem}
+.by{font-size:.7rem;color:rgba(200,169,74,.7)}
+.bod{padding:1rem 1.2rem}
+.desc{font-size:.8rem;color:var(--soft);line-height:1.7;margin-bottom:.8rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.8rem}
+.tag{font-size:.68rem;background:var(--gl);color:var(--g);padding:.2rem .6rem;border-radius:100px;border:1px solid var(--gm)}
+.btn-yt{display:flex;align-items:center;justify-content:center;gap:.5rem;background:#CC0000;color:#fff;padding:.75rem;border-radius:6px;text-decoration:none;font-size:.85rem;font-weight:600;transition:background .3s;width:100%}
+.btn-yt:hover{background:#AA0000}
+.en{display:none}.bn{display:block}
+body.e .en{display:block}body.e .bn{display:none}
+span.en{display:none}span.bn{display:inline}
+body.e span.en{display:inline}body.e span.bn{display:none}
+footer{text-align:center;padding:2rem;border-top:1px solid var(--bd);font-size:.78rem;color:var(--soft)}
+footer a{color:var(--g);text-decoration:none}
+</style>
+</head>
+<body id="R">
+<div class="bar">
+  <a href="index.html">&#9775; <span class="bn">ইসলামিক আলো</span><span class="en">Islamic Light</span></a>
+  <div><button class="lb on" id="B" onclick="L('bn')">বাংলা</button><button class="lb" id="E" onclick="L('en')">English</button></div>
+</div>
+<nav>
+  <a href="index.html"><span class="bn">হোম</span><span class="en">Home</span></a>
+  <a href="index.html#kalema"><span class="bn">কালেমা</span><span class="en">Kalema</span></a>
+  <a href="index.html#dua"><span class="bn">দোয়া</span><span class="en">Dua</span></a>
+  <a href="books.html"><span class="bn">&#128214; বই</span><span class="en">&#128214; Books</span></a>
+  <a href="audio.html" class="on"><span class="bn">&#127925; অডিও</span><span class="en">&#127925; Audio</span></a>
+</nav>
+<div class="hero">
+  <div class="htag"><span class="bn">ইসলামিক অডিও</span><span class="en">Islamic Audio</span></div>
+  <h1><span class="bn">&#127925; ইসলামিক অডিও সংগ্রহ</span><span class="en">&#127925; Islamic Audio Collection</span></h1>
+  <p><span class="bn">Click করলে সরাসরি YouTube এ যাবে</span><span class="en">Click to go directly to YouTube</span></p>
+</div>
+<main>
+
+<!-- কোরআন তেলাওয়াত -->
+<div class="cat">
+  <div class="ct">&#127897; <span class="bn">কোরআন তেলাওয়াত</span><span class="en">Quran Recitation</span></div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#2D6A4F,#1B4332)">
+        <div class="ico">&#127897;</div>
+        <div><div class="ti"><span class="bn">শেখ আব্দুর রহমান আস-সুদাইস</span><span class="en">Sheikh Abdur Rahman Al-Sudais</span></div><div class="by">Masjid Al-Haram, Makkah</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">মক্কা মসজিদুল হারামের ইমাম — পৃথিবীর সেরা কোরআন তেলাওয়াতকারী</span><span class="en">Imam of Masjid Al-Haram — one of the world's best reciters</span></div>
+        <div class="tags"><span class="tag">Quran</span><span class="tag">Full Quran</span><span class="tag">Arabic</span></div>
+        <a href="https://www.youtube.com/@sudais" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ শুনুন</span><span class="en">Listen on YouTube</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#2D6A4F,#1B4332)">
+        <div class="ico">&#127897;</div>
+        <div><div class="ti"><span class="bn">শেখ মিশারি রাশিদ আল-আফাসি</span><span class="en">Sheikh Mishary Rashid Al-Afasy</span></div><div class="by">Kuwait</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">বিশ্বব্যাপী জনপ্রিয় — অত্যন্ত সুমধুর কণ্ঠে কোরআন তেলাওয়াত</span><span class="en">Worldwide popular — beautiful melodious Quran recitation</span></div>
+        <div class="tags"><span class="tag">Quran</span><span class="tag">Popular</span></div>
+        <a href="https://www.youtube.com/@MisharyAlafasy" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ শুনুন</span><span class="en">Listen on YouTube</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#2D6A4F,#1B4332)">
+        <div class="ico">&#127897;</div>
+        <div><div class="ti"><span class="bn">সূরা আর-রহমান — শেখ আব্দুল বাসেত</span><span class="en">Surah Ar-Rahman — Sheikh Abdul Basit</span></div><div class="by">Egypt</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">কোরআনের সৌন্দর্যের রানি সূরা আর রহমান — হৃদয় শান্ত করার তেলাওয়াত</span><span class="en">The beautiful Surah Ar-Rahman — heart soothing recitation</span></div>
+        <div class="tags"><span class="tag">Surah</span><span class="tag">Heart Healing</span></div>
+        <a href="https://www.youtube.com/watch?v=gosHKKHMXs4" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ শুনুন</span><span class="en">Listen on YouTube</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#2D6A4F,#1B4332)">
+        <div class="ico">&#127897;</div>
+        <div><div class="ti"><span class="bn">সূরা ইয়াসিন — শেখ সাউদ আশ-শুরাইম</span><span class="en">Surah Yasin — Sheikh Saud Al-Shuraim</span></div><div class="by">Masjid Al-Haram</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">কোরআনের হৃদয় সূরা ইয়াসিন — অত্যন্ত সুন্দর তেলাওয়াত</span><span class="en">The heart of Quran Surah Yasin — beautiful recitation</span></div>
+        <div class="tags"><span class="tag">Surah Yasin</span><span class="tag">Popular</span></div>
+        <a href="https://www.youtube.com/watch?v=Qk3pMVBN1Ws" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ শুনুন</span><span class="en">Listen on YouTube</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- আজান -->
+<div class="cat">
+  <div class="ct">&#128226; <span class="bn">আজান</span><span class="en">Azan</span></div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#7B3F00,#C8A94A)">
+        <div class="ico">&#128226;</div>
+        <div><div class="ti"><span class="bn">মক্কা মসজিদুল হারামের আজান</span><span class="en">Azan of Masjid Al-Haram Makkah</span></div><div class="by">Makkah Al-Mukarramah</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">পৃথিবীর সবচেয়ে পবিত্র মসজিদের আজান</span><span class="en">Azan from the holiest mosque on earth</span></div>
+        <div class="tags"><span class="tag">Azan</span><span class="tag">Makkah</span></div>
+        <a href="https://www.youtube.com/watch?v=MrpSNnEH7KA" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ শুনুন</span><span class="en">Listen on YouTube</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#7B3F00,#C8A94A)">
+        <div class="ico">&#128226;</div>
+        <div><div class="ti"><span class="bn">মদিনা মসজিদে নববীর আজান</span><span class="en">Azan of Masjid An-Nabawi Madinah</span></div><div class="by">Al-Madinah Al-Munawwarah</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">প্রিয় নবীর (সা.) মসজিদ থেকে আজান — অত্যন্ত হৃদয়গ্রাহী</span><span class="en">Azan from the Prophet's mosque — deeply touching</span></div>
+        <div class="tags"><span class="tag">Azan</span><span class="tag">Madinah</span></div>
+        <a href="https://www.youtube.com/watch?v=7qt3SHDlHAc" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ শুনুন</span><span class="en">Listen on YouTube</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- নাশিদ -->
+<div class="cat">
+  <div class="ct">&#127925; <span class="bn">ইসলামিক নাশিদ</span><span class="en">Islamic Nasheed</span></div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#1A237E,#3949AB)">
+        <div class="ico">&#127925;</div>
+        <div><div class="ti"><span class="bn">মাহের জেইন — Assalamu Alayka</span><span class="en">Maher Zain — Assalamu Alayka</span></div><div class="by">Maher Zain</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">বিশ্বখ্যাত ইসলামিক শিল্পী মাহের জেইনের সুন্দর নাশিদ</span><span class="en">Beautiful nasheed by world-famous Islamic artist Maher Zain</span></div>
+        <div class="tags"><span class="tag">Nasheed</span><span class="tag">Popular</span></div>
+        <a href="https://www.youtube.com/watch?v=pCBWQPBFBwQ" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ শুনুন</span><span class="en">Listen on YouTube</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#1A237E,#3949AB)">
+        <div class="ico">&#127925;</div>
+        <div><div class="ti"><span class="bn">মাহের জেইন — Thank You Allah</span><span class="en">Maher Zain — Thank You Allah</span></div><div class="by">Maher Zain</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">আল্লাহর প্রতি কৃতজ্ঞতার সুন্দর নাশিদ — মন ছুঁয়ে যাবে</span><span class="en">Beautiful nasheed of gratitude to Allah — will touch your heart</span></div>
+        <div class="tags"><span class="tag">Nasheed</span><span class="tag">English</span></div>
+        <a href="https://www.youtube.com/watch?v=_fBiCWZFMes" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ শুনুন</span><span class="en">Listen on YouTube</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#1A237E,#3949AB)">
+        <div class="ico">&#127925;</div>
+        <div><div class="ti"><span class="bn">তালাআল বদর আলাইনা — ক্লাসিক নাশিদ</span><span class="en">Tala'a Al-Badru Alayna — Classic</span></div><div class="by">Historic Nasheed</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">ঐতিহাসিক নাশিদ — নবী (সা.) মদিনায় আসার সময় গাওয়া হয়েছিল</span><span class="en">Historic nasheed — sung when Prophet arrived in Madinah</span></div>
+        <div class="tags"><span class="tag">Nasheed</span><span class="tag">Classic</span><span class="tag">Arabic</span></div>
+        <a href="https://www.youtube.com/watch?v=Wq3hygEfmeo" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ শুনুন</span><span class="en">Listen on YouTube</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ওয়াজ -->
+<div class="cat">
+  <div class="ct">&#127908; <span class="bn">ওয়াজ ও লেকচার</span><span class="en">Waz & Lectures</span></div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#2D6A4F,#40916C)">
+        <div class="ico">&#127908;</div>
+        <div><div class="ti"><span class="bn">Dr. Zakir Naik — ইসলামিক লেকচার</span><span class="en">Dr. Zakir Naik — Islamic Lectures</span></div><div class="by">Islamic Research Foundation</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">বিশ্বখ্যাত ইসলামিক স্কলার ড. জাকির নায়েকের জ্ঞানগর্ভ বক্তৃতা</span><span class="en">Enlightening lectures by world-renowned Islamic scholar</span></div>
+        <div class="tags"><span class="tag">Lecture</span><span class="tag">English</span><span class="tag">Q&A</span></div>
+        <a href="https://www.youtube.com/@DrZakirNaik" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube Channel দেখুন</span><span class="en">Visit YouTube Channel</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#2D6A4F,#40916C)">
+        <div class="ico">&#127908;</div>
+        <div><div class="ti"><span class="bn">বাংলা ইসলামিক ওয়াজ</span><span class="en">Bengali Islamic Waz</span></div><div class="by">Various Scholars</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">বাংলাদেশ ও ভারতের বিখ্যাত আলেমদের ওয়াজ মাহফিল</span><span class="en">Waz from famous scholars of Bangladesh and India</span></div>
+        <div class="tags"><span class="tag">Waz</span><span class="tag">Bengali</span></div>
+        <a href="https://www.youtube.com/results?search_query=bangla+waz+mahfil+islamic" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube এ খুঁজুন</span><span class="en">Search on YouTube</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="top" style="background:linear-gradient(135deg,#2D6A4F,#40916C)">
+        <div class="ico">&#127908;</div>
+        <div><div class="ti"><span class="bn">Nouman Ali Khan — লেকচার</span><span class="en">Nouman Ali Khan — Lectures</span></div><div class="by">Bayyinah Institute</div></div>
+      </div>
+      <div class="bod">
+        <div class="desc"><span class="bn">কোরআনের সহজ ব্যাখ্যার জন্য বিখ্যাত — তরুণদের মাঝে অত্যন্ত জনপ্রিয়</span><span class="en">Famous for simple Quran explanations — very popular among youth</span></div>
+        <div class="tags"><span class="tag">Lecture</span><span class="tag">English</span><span class="tag">Quran</span></div>
+        <a href="https://www.youtube.com/@bayyinah" target="_blank" class="btn-yt">&#9654; <span class="bn">YouTube Channel দেখুন</span><span class="en">Visit YouTube Channel</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</main>
+<footer>
+  <p class="bn">&#169; ২০২৫ ইসলামিক আলো | <a href="https://mmalam.in">mmalam.in</a> | Designed by <a href="https://mmalam.in">Md Masud Alam Sardar</a></p>
+  <p class="en">&#169; 2025 Islamic Light | <a href="https://mmalam.in">mmalam.in</a> | Designed by <a href="https://mmalam.in">Md Masud Alam Sardar</a></p>
+</footer>
+<script>
+function L(l){var b=document.getElementById('R'),bn=document.getElementById('B'),en=document.getElementById('E');if(l==='en'){b.classList.add('e');en.classList.add('on');bn.classList.remove('on')}else{b.classList.remove('e');bn.classList.add('on');en.classList.remove('on')}}
+</script>
+</body>
+</html>
