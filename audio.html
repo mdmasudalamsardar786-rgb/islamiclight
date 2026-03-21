@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="bn" id="htmlRoot">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ইসলামিক অডিও | Islamic Light</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--green:#2D6A4F;--green-light:#E8F5E9;--green-mid:#B7DFC8;--gold:#C8A94A;--gold-light:#FDF3DC;--gray:#F0F0EE;--ink:#1A1A1A;--ink-soft:#555555;--white:#FFFFFF;--border:rgba(0,0,0,0.1)}
+    body{background:var(--gray);color:var(--ink);font-family:'Noto Sans Bengali',sans-serif;font-weight:400}
+    .top-bar{position:sticky;top:0;z-index:200;background:var(--green);border-bottom:2px solid var(--gold);display:flex;justify-content:space-between;align-items:center;padding:0.7rem 2rem}
+    .top-brand{font-family:'Amiri',serif;font-size:1.3rem;font-weight:700;color:var(--gold);text-decoration:none}
+    .lang-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.3rem 0.9rem;font-size:0.75rem;cursor:pointer;border-radius:2px;transition:all 0.3s;font-family:inherit;margin-left:0.4rem}
+    .lang-btn.active,.lang-btn:hover{background:var(--gold);color:var(--green);font-weight:600}
+    nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:46px;z-index:100;padding:0.8rem 2rem;display:flex;justify-content:center;gap:0.5rem;flex-wrap:wrap}
+    nav a{font-size:0.82rem;color:var(--ink-soft);text-decoration:none;padding:0.4rem 0.8rem;border-radius:4px;transition:all 0.3s;border:1px solid transparent}
+    nav a:hover{color:var(--green);background:var(--green-light);border-color:var(--green-mid)}
+    .hero{background:linear-gradient(135deg,var(--green) 0%,#1B4332 100%);padding:3rem 2rem;text-align:center;border-bottom:3px solid var(--gold)}
+    .hero-tag{display:inline-block;background:rgba(200,169,74,0.15);border:1px solid rgba(200,169,74,0.4);padding:0.3rem 1rem;font-size:0.72rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;border-radius:2px}
+    .hero h1{font-family:'Amiri',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);line-height:1.4}
+    .hero p{font-size:0.88rem;color:rgba(255,255,255,0.65);margin-top:0.5rem}
+    section{padding:3rem 2rem;max-width:1100px;margin:0 auto}
+    .cat-section{margin-bottom:3rem}
+    .cat-title{font-family:'Amiri',serif;font-size:1.3rem;color:var(--green);margin-bottom:1.2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--gold);display:flex;align-items:center;gap:0.5rem}
+    .audio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+    .audio-card{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s}
+    .audio-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(45,106,79,0.12)}
+    .audio-top{background:linear-gradient(135deg,var(--green) 0%,#1B4332 100%);padding:1.5rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid var(--gold)}
+    .audio-icon{width:52px;height:52px;background:rgba(200,169,74,0.2);border:1px solid rgba(200,169,74,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+    .audio-info{flex:1}
+    .audio-title{font-family:'Amiri',serif;font-size:1rem;color:var(--white);line-height:1.4;margin-bottom:0.2rem}
+    .audio-by{font-size:0.72rem;color:rgba(200,169,74,0.7);letter-spacing:0.05em}
+    .audio-body{padding:1rem 1.2rem}
+    .audio-desc{font-size:0.82rem;color:var(--ink-soft);line-height:1.7;margin-bottom:1rem}
+    .audio-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1rem}
+    .audio-tag{font-size:0.68rem;background:var(--green-light);color:var(--green);padding:0.2rem 0.6rem;border-radius:100px;border:1px solid var(--green-mid)}
+    .btn-listen{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:var(--green);color:var(--white);padding:0.7rem;border-radius:6px;text-decoration:none;font-size:0.82rem;font-weight:500;transition:background 0.3s;width:100%}
+    .btn-listen:hover{background:#1B4332}
+    .btn-yt{background:#CC0000}
+    .btn-yt:hover{background:#AA0000}
+
+    /* Embedded YouTube */
+    .yt-embed{margin-top:0.8rem;border-radius:8px;overflow:hidden;display:none}
+    .yt-embed iframe{width:100%;height:200px;border:none;display:block}
+    .toggle-embed{display:flex;align-items:center;justify-content:center;gap:0.5rem;background:transparent;border:1px solid var(--border);color:var(--ink-soft);padding:0.6rem;border-radius:6px;font-size:0.78rem;cursor:pointer;width:100%;margin-top:0.5rem;font-family:inherit;transition:all 0.3s}
+    .toggle-embed:hover{border-color:var(--green);color:var(--green)}
+
+    .lang-en{display:none}.lang-bn{display:block}
+    body.en .lang-en{display:block}body.en .lang-bn{display:none}
+    span.lang-en{display:none}span.lang-bn{display:inline}
+    body.en span.lang-en{display:inline}body.en span.lang-bn{display:none}
+    footer{text-align:center;padding:2rem;border-top:1px solid var(--border);font-size:0.78rem;color:var(--ink-soft)}
+    footer a{color:var(--green);text-decoration:none}
+    @media(max-width:768px){section{padding:2rem 1.2rem}}
+  </style>
+</head>
+<body id="bodyRoot">
+
+  <div class="top-bar">
+    <a href="index.html" class="top-brand">☪️ <span class="lang-bn">ইসলামিক আলো</span><span class="lang-en">Islamic Light</span></a>
+    <div>
+      <button class="lang-btn active" id="btnBn" onclick="setLang('bn')">বাংলা</button>
+      <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+    </div>
+  </div>
+
+  <nav>
+    <a href="index.html"><span class="lang-bn">হোম</span><span class="lang-en">Home</span></a>
+    <a href="index.html#kalema"><span class="lang-bn">কালেমা</span><span class="lang-en">Kalema</span></a>
+    <a href="index.html#dua"><span class="lang-bn">দোয়া</span><span class="lang-en">Dua</span></a>
+    <a href="books.html"><span class="lang-bn">📖 বই</span><span class="lang-en">📖 Books</span></a>
+    <a href="audio.html" style="color:var(--green);background:var(--green-light);border-color:var(--green-mid)"><span class="lang-bn">🎵 অডিও</span><span class="lang-en">🎵 Audio</span></a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-tag"><span class="lang-bn">ইসলামিক অডিও</span><span class="lang-en">Islamic Audio</span></div>
+    <h1><span class="lang-bn">🎵 ইসলামিক অডিও সংগ্রহ</span><span class="lang-en">🎵 Islamic Audio Collection</span></h1>
+    <p><span class="lang-bn">কোরআন তেলাওয়াত, নাশিদ, ওয়াজ ও আজান — একটি জায়গায়</span><span class="lang-en">Quran recitation, Nasheed, Waz and Azan — all in one place</span></p>
+  </div>
+
+  <section>
+
+    <!-- কোরআন তেলাওয়াত -->
+    <div class="cat-section">
+      <div class="cat-title">🎙️ <span class="lang-bn">কোরআন তেলাওয়াত</span><span class="lang-en">Quran Recitation</span></div>
+      <div class="audio-grid">
+
+        <div class="audio-card">
+          <div class="audio-top">
+            <div class="audio-icon">🎙️</div>
+            <div class="audio-info">
+              <div class="audio-title"><span class="lang-bn">শেখ আব্দুর রহমান আস-সুদাইস</span><span class="lang-en">Sheikh Abdul Rahman Al-Sudais</span></div>
+              <div class="audio-by">Masjid Al-Haram, Makkah</div>
+            </div>
+          </div>
+          <div class="audio-body">
+            <div class="audio-desc"><span class="lang-bn">মক্কা মসজিদুল হারামের ইমাম — পৃথিবীর সেরা কোরআন তেলাওয়াতকারীদের একজন</span><span class="lang-en">Imam of Masjid Al-Haram — one of the world's best Quran reciters</span></div>
+            <div class="audio-tags"><span class="audio-tag">Quran</span><span class="audio-tag">Full Quran</span><span class="audio-tag">Arabic</span></div>
+            <a href="https://www.youtube.com/results?search_query=sudais+quran+recitation" target="_blank" class="btn-listen btn-yt">▶ <span class="lang-bn">YouTube এ শুনুন</span><span class="lang-en">Listen on YouTube</span></a>
+            <button class="toggle-embed" onclick="toggleEmbed(this,'https://www.youtube.com/embed/videoseries?list=PLos59gI8PN_z7VMzVLQdF8KAJ1VjJsLGr')">
+              <span class="lang-bn">▶ এখানেই শুনুন</span><span class="lang-en">▶ Play Here</span>
+            </button>
+            <div class="yt-embed"></div>
+          </div>
+        </div>
+
+        <div class="audio-card">
+          <div class="audio-top">
+            <div class="audio-icon">🎙️</div>
+            <div class="audio-info">
+              <div class="audio-title"><span class="lang-bn">শেখ মিশারি রাশিদ আল-আফাসি</span><span class="lang-en">Sheikh Mishary Rashid Al-Afasy</span></div>
+              <div class="audio-by">Kuwait</div>
+            </div>
+          </div>
+          <div class="audio-body">
+            <div class="audio-desc"><span class="lang-bn">বিশ্বব্যাপী জনপ্রিয় কোরআন তেলাওয়াতকারী — অত্যন্ত সুমধুর কণ্ঠ</span><span class="lang-en">Worldwide popular reciter — extremely melodious voice</span></div>
+            <div class="audio-tags"><span class="audio-tag">Quran</span><span class="audio-tag">Popular</span></div>
+            <a href="https://www.youtube.com/@MisharyAlafasy" target="_blank" class="btn-listen btn-yt">▶ <span class="lang-bn">YouTube এ শুনুন</span><span class="lang-en">Listen on YouTube</span></a>
+            <button class="toggle-embed" onclick="toggleEmbed(this,'https://www.youtube.com/embed/iWDtx_SJgms')">
+              <span class="lang-bn">▶ এখানেই শুনুন</span><span class="lang-en">▶ Play Here</span>
+            </button>
+            <div class="yt-embed"></div>
+          </div>
+        </div>
+
+        <div class="audio-card">
+          <div class="audio-top">
+            <div class="audio-icon">🎙️</div>
+            <div class="audio-info">
+              <div class="audio-title"><span class="lang-bn">সূরা আর-রহমান</span><span class="lang-en">Surah Ar-Rahman</span></div>
+              <div class="audio-by">The Most Merciful</div>
+            </div>
+          </div>
+          <div class="audio-body">
+            <div class="audio-desc"><span class="lang-bn">কোরআনের সৌন্দর্যের রানি — সূরা আর রহমান, হৃদয় শান্ত করার তেলাওয়াত</span><span class="lang-en">The beautiful Surah Ar-Rahman — heart soothing recitation</span></div>
+            <div class="audio-tags"><span class="audio-tag">Surah</span><span class="audio-tag">Heart Healing</span></div>
+            <button class="toggle-embed" onclick="toggleEmbed(this,'https://www.youtube.com/embed/CKMzTqb9Nxk')">
+              <span class="lang-bn">▶ এখানেই শুনুন</span><span class="lang-en">▶ Play Here</span>
+            </button>
+            <div class="yt-embed"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- আজান -->
+    <div class="cat-section">
+      <div class="cat-title">📢 <span class="lang-bn">আজান</span><span class="lang-en">Azan</span></div>
+      <div class="audio-grid">
+
+        <div class="audio-card">
+          <div class="audio-top" style="background:linear-gradient(135deg,#7B3F00 0%,#C8A94A 100%)">
+            <div class="audio-icon">📢</div>
+            <div class="audio-info">
+              <div class="audio-title"><span class="lang-bn">মক্কা মসজিদুল হারামের আজান</span><span class="lang-en">Azan of Masjid Al-Haram Makkah</span></div>
+              <div class="audio-by">Makkah Al-Mukarramah</div>
+            </div>
+          </div>
+          <div class="audio-body">
+            <div class="audio-desc"><span class="lang-bn">পৃথিবীর সবচেয়ে পবিত্র মসজিদের আজান — প্রতিদিন কোটি মুসলিম শোনেন</span><span class="lang-en">Azan from the holiest mosque on earth — heard by billions daily</span></div>
+            <div class="audio-tags"><span class="audio-tag">Azan</span><span class="audio-tag">Makkah</span></div>
+            <button class="toggle-embed" onclick="toggleEmbed(this,'https://www.youtube.com/embed/09JbODj0E-k')">
+              <span class="lang-bn">▶ শুনুন</span><span class="lang-en">▶ Listen</span>
+            </button>
+            <div class="yt-embed"></div>
+          </div>
+        </div>
+
+        <div class="audio-card">
+          <div class="audio-top" style="background:linear-gradient(135deg,#7B3F00 0%,#C8A94A 100%)">
+            <div class="audio-icon">📢</div>
+            <div class="audio-info">
+              <div class="audio-title"><span class="lang-bn">মদিনা মসজিদে নববীর আজান</span><span class="lang-en">Azan of Masjid An-Nabawi Madinah</span></div>
+              <div class="audio-by">Al-Madinah Al-Munawwarah</div>
+            </div>
+          </div>
+          <div class="audio-body">
+            <div class="audio-desc"><span class="lang-bn">প্রিয় নবীর (সা.) মসজিদ থেকে আজান — অত্যন্ত হৃদয়গ্রাহী</span><span class="lang-en">Azan from the Prophet's mosque — deeply touching</span></div>
+            <div class="audio-tags"><span class="audio-tag">Azan</span><span class="audio-tag">Madinah</span></div>
+            <button class="toggle-embed" onclick="toggleEmbed(this,'https://www.youtube.com/embed/cGGfFxqBQxs')">
+              <span class="lang-bn">▶ শুনুন</span><span class="lang-en">▶ Listen</span>
+            </button>
+            <div class="yt-embed"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- নাশিদ -->
+    <div class="cat-section">
+      <div class="cat-title">🎵 <span class="lang-bn">ইসলামিক নাশিদ</span><span class="lang-en">Islamic Nasheed</span></div>
+      <div class="audio-grid">
+
+        <div class="audio-card">
+          <div class="audio-top" style="background:linear-gradient(135deg,#1A237E 0%,#3949AB 100%)">
+            <div class="audio-icon">🎵</div>
+            <div class="audio-info">
+              <div class="audio-title"><span class="lang-bn">তালাল বদর — নাশিদ</span><span class="lang-en">Tala'a Al-Badru Alayna</span></div>
+              <div class="audio-by">Classic Islamic Nasheed</div>
+            </div>
+          </div>
+          <div class="audio-body">
+            <div class="audio-desc"><span class="lang-bn">ঐতিহাসিক ইসলামিক নাশিদ — নবী (সা.) মদিনায় আসার সময় গাওয়া হয়েছিল</span><span class="lang-en">Historic nasheed — sung when Prophet arrived in Madinah</span></div>
+            <div class="audio-tags"><span class="audio-tag">Nasheed</span><span class="audio-tag">Classic</span><span class="audio-tag">Arabic</span></div>
+            <button class="toggle-embed" onclick="toggleEmbed(this,'https://www.youtube.com/embed/Wq3hygEfmeo')">
+              <span class="lang-bn">▶ শুনুন</span><span class="lang-en">▶ Listen</span>
+            </button>
+            <div class="yt-embed"></div>
+          </div>
+        </div>
+
+        <div class="audio-card">
+          <div class="audio-top" style="background:linear-gradient(135deg,#1A237E 0%,#3949AB 100%)">
+            <div class="audio-icon">🎵</div>
+            <div class="audio-info">
+              <div class="audio-title"><span class="lang-bn">মাহের জেইন — নাশিদ</span><span class="lang-en">Maher Zain — Nasheed</span></div>
+              <div class="audio-by">Maher Zain</div>
+            </div>
+          </div>
+          <div class="audio-body">
+            <div class="audio-desc"><span class="lang-bn">বিশ্বখ্যাত ইসলামিক শিল্পী মাহের জেইনের সুন্দর নাশিদ সংগ্রহ</span><span class="lang-en">Beautiful nasheed collection by world-famous Islamic artist Maher Zain</span></div>
+            <div class="audio-tags"><span class="audio-tag">Nasheed</span><span class="audio-tag">Popular</span><span class="audio-tag">English</span></div>
+            <a href="https://www.youtube.com/@MaherZainOfficial" target="_blank" class="btn-listen btn-yt">▶ <span class="lang-bn">YouTube Channel</span><span class="lang-en">YouTube Channel</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ওয়াজ -->
+    <div class="cat-section">
+      <div class="cat-title">🎤 <span class="lang-bn">ওয়াজ মাহফিল</span><span class="lang-en">Islamic Lectures</span></div>
+      <div class="audio-grid">
+
+        <div class="audio-card">
+          <div class="audio-top" style="background:linear-gradient(135deg,#2D6A4F 0%,#40916C 100%)">
+            <div class="audio-icon">🎤</div>
+            <div class="audio-info">
+              <div class="audio-title"><span class="lang-bn">ইসলামিক লেকচার সংগ্রহ</span><span class="lang-en">Islamic Lecture Collection</span></div>
+              <div class="audio-by">Various Scholars</div>
+            </div>
+          </div>
+          <div class="audio-body">
+            <div class="audio-desc"><span class="lang-bn">বিভিন্ন আলেমদের ইসলামিক বক্তৃতা ও ওয়াজ — জ্ঞান ও অনুপ্রেরণার জন্য</span><span class="lang-en">Islamic lectures by various scholars — for knowledge and inspiration</span></div>
+            <div class="audio-tags"><span class="audio-tag">Lecture</span><span class="audio-tag">Bengali</span><span class="audio-tag">Arabic</span></div>
+            <a href="https://www.youtube.com/results?search_query=islamic+lecture+bangla+waz" target="_blank" class="btn-listen btn-yt">▶ <span class="lang-bn">YouTube এ দেখুন</span><span class="lang-en">Watch on YouTube</span></a>
+          </div>
+        </div>
+
+        <div class="audio-card">
+          <div class="audio-top" style="background:linear-gradient(135deg,#2D6A4F 0%,#40916C 100%)">
+            <div class="audio-icon">🎤</div>
+            <div class="audio-info">
+              <div class="audio-title"><span class="lang-bn">Dr. Zakir Naik — লেকচার</span><span class="lang-en">Dr. Zakir Naik — Lectures</span></div>
+              <div class="audio-by">Islamic Research Foundation</div>
+            </div>
+          </div>
+          <div class="audio-body">
+            <div class="audio-desc"><span class="lang-bn">বিশ্বখ্যাত ইসলামিক স্কলার ড. জাকির নায়েকের জ্ঞানগর্ভ বক্তৃতা</span><span class="lang-en">Enlightening lectures by world-renowned Islamic scholar Dr. Zakir Naik</span></div>
+            <div class="audio-tags"><span class="audio-tag">Lecture</span><span class="audio-tag">English</span><span class="audio-tag">Q&A</span></div>
+            <a href="https://www.youtube.com/@DrZakirNaik" target="_blank" class="btn-listen btn-yt">▶ <span class="lang-bn">YouTube Channel</span><span class="lang-en">YouTube Channel</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p class="lang-bn">© ২০২৫ ইসলামিক আলো | <a href="https://mmalam.in">mmalam.in</a> | Designed by <a href="https://mmalam.in">Md Masud Alam Sardar</a></p>
+    <p class="lang-en">© 2025 Islamic Light | <a href="https://mmalam.in">mmalam.in</a> | Designed by <a href="https://mmalam.in">Md Masud Alam Sardar</a></p>
+  </footer>
+
+  <script>
+    function setLang(lang){
+      const body=document.getElementById('bodyRoot');
+      const btnBn=document.getElementById('btnBn');
+      const btnEn=document.getElementById('btnEn');
+      if(lang==='en'){body.classList.add('en');btnEn.classList.add('active');btnBn.classList.remove('active')}
+      else{body.classList.remove('en');btnBn.classList.add('active');btnEn.classList.remove('active')}
+    }
+
+    function toggleEmbed(btn, videoUrl){
+      const embedDiv = btn.nextElementSibling;
+      if(embedDiv.style.display === 'block'){
+        embedDiv.style.display = 'none';
+        embedDiv.innerHTML = '';
+        btn.innerHTML = '<span class="lang-bn">▶ এখানেই শুনুন</span><span class="lang-en">▶ Play Here</span>';
+      } else {
+        embedDiv.style.display = 'block';
+        embedDiv.innerHTML = '<iframe src="'+videoUrl+'?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        btn.innerHTML = '<span class="lang-bn">⏹ বন্ধ করুন</span><span class="lang-en">⏹ Stop</span>';
+      }
+    }
+  </script>
+</body>
+</html>
